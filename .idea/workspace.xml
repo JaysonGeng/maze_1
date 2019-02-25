@@ -33,7 +33,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31af0fe4-f243-4320-9b50-e9d701b14980" name="Default Changelist" comment="" />
+    <list default="true" id="31af0fe4-f243-4320-9b50-e9d701b14980" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/test1.txt" beforeDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -60,6 +62,9 @@
       </file>
     </leaf>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -75,6 +80,7 @@
     <option name="width" value="1505" />
     <option name="height" value="1115" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -130,18 +136,17 @@
       <option name="presentableId" value="Default" />
       <updated>1550995706224</updated>
       <workItem from="1550995711574" duration="1640000" />
-      <workItem from="1551029513540" duration="15215000" />
+      <workItem from="1551029513540" duration="15478000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16855000" />
+    <option name="totallyTimeSpent" value="17118000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="23" width="2062" height="1136" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25249502" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25249502" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
