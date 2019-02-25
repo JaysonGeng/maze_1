@@ -3,7 +3,7 @@
 using namespace std;
 
 
-//¶¨ÒåÃèÊöÃÔ¹¬ÖĞµ±Ç°Î»ÖÃµÄ½á¹¹ÀàĞÍ
+//å®šä¹‰æè¿°è¿·å®«ä¸­å½“å‰ä½ç½®çš„ç»“æ„ç±»å‹
 class Point {
 public:
 
@@ -11,16 +11,16 @@ public:
 
     Point();
 
-    //x´ú±íµ±Ç°Î»ÖÃµÄĞĞ×ø±ê
+    //xä»£è¡¨å½“å‰ä½ç½®çš„è¡Œåæ ‡
     int x;
-    //y´ú±íµ±Ç°Î»ÖÃµÄÁĞ×ø±ê
+    //yä»£è¡¨å½“å‰ä½ç½®çš„åˆ—åæ ‡
     int y;
-    //0:ÎŞĞ§,1:ÓÒ,2:ÏÂ,3:×ó,4:ÉÏ
+    //0:æ— æ•ˆ,1:å³,2:ä¸‹,3:å·¦,4:ä¸Š
     int dir;
 };
 
 
-//Á´±í½áµã
+//é“¾è¡¨ç»“ç‚¹
 class LinkNode {
     friend class Stack;
 
@@ -31,47 +31,59 @@ public:
 
 class MyStack {
 private:
-    //Ö¸ÏòµÚÒ»¸ö½áµãµÄÕ»¶¥Ö¸Õë
+    //æŒ‡å‘ç¬¬ä¸€ä¸ªç»“ç‚¹çš„æ ˆé¡¶æŒ‡é’ˆ
     LinkNode *top;
 public:
-    //¹¹Ôìº¯Êı£¬ÖÃ¿ÕÕ»
+    //æ„é€ å‡½æ•°ï¼Œç½®ç©ºæ ˆ
     MyStack();
 
-    //Îö¹¹º¯Êı
+    //ææ„å‡½æ•°
     ~MyStack();
 
-    //°ÑÔªËØdataÑ¹ÈëÕ»ÖĞ
+    //æŠŠå…ƒç´ dataå‹å…¥æ ˆä¸­
     void Push(Point e);
 
-    //Ê¹Õ»¶¥ÔªËØ³öÕ»
+    //ä½¿æ ˆé¡¶å…ƒç´ å‡ºæ ˆ
     Point Pop();
 
-    //È¡³öÕ»¶¥ÔªËØ
+    //å–å‡ºæ ˆé¡¶å…ƒç´ 
     Point getPop();
 
-    //°ÑÕ»Çå¿Õ
+    //æŠŠæ ˆæ¸…ç©º
     void Clear();
 
-    //ÅĞ¶ÏÕ»ÊÇ·ñÎª¿Õ£¬Èç¹ûÎª¿ÕÔò·µ»Ø1£¬·ñÔò·µ»Ø0
+    //åˆ¤æ–­æ ˆæ˜¯å¦ä¸ºç©ºï¼Œå¦‚æœä¸ºç©ºåˆ™è¿”å›1ï¼Œå¦åˆ™è¿”å›0
     bool empty();
 };
 
 
-//ÃÔ¹¬Àà
+//è¿·å®«ç±»
 class Maze {
 
 private:
-    //ÃÔ¹¬
+    //è¿·å®«
     int **maze{};
 
-    //ÃÔ¹¬´óĞ¡
+
+    //è¿·å®«å¤§å°
     int m = 0, n = 0;
 
-    //Æğµã/ÖÕµã
+    //èµ·ç‚¹/ç»ˆç‚¹
     Point start, final;
 
+    //é€šè·¯æ€»æ•°è®¡æ•°
+    int count = 0;
+
+
 public:
-    //¶¨Òåµ±Ç°Î»ÖÃÒÆ¶¯µÄ4¸ö·½Ïò
+
+    //éå†åœ°å›¾
+    MyStack qury_stack;
+
+    //è®°å½•è·¯å¾„
+    MyStack path_stack;
+
+    //å®šä¹‰å½“å‰ä½ç½®ç§»åŠ¨çš„4ä¸ªæ–¹å‘
     int action[4][2] = {{0,  1},
                         {1,  0},
                         {0,  -1},
@@ -79,21 +91,23 @@ public:
 
     Point getSize();
 
-    //»ñÈ¡ÃÔ¹¬
-    //·µ»Ø´æÈ¡ÃÔ¹¬µÄ¶şÎ¬Ö¸Õë
+    //è·å–è¿·å®«
+    //è¿”å›å­˜å–è¿·å®«çš„äºŒç»´æŒ‡é’ˆ
     void initMaze();
 
-//Ñ°ÕÒÃÔ¹¬mazeÖĞ´Ó£¨0£¬0£©µ½£¨m,n£©µÄÂ·¾¶
-//µ½Ôò·µ»Øtrue,·ñÔò·µ»Øfalse
+    void initMaze(int start_x, int start_y);
+
+//å¯»æ‰¾è¿·å®«mazeä¸­ä»ï¼ˆ0ï¼Œ0ï¼‰åˆ°ï¼ˆm,nï¼‰çš„è·¯å¾„
+//åˆ°åˆ™è¿”å›true,å¦åˆ™è¿”å›false
     bool MazePathByBFS();
 
     bool MazePathByDFS(int x, int y);
 
-//Êä³öÃÔ¹¬µÄÂ·¾¶
+//è¾“å‡ºè¿·å®«çš„è·¯å¾„
     void PrintPath(MyStack path_stack);
 
-//»Ö¸´ÃÔ¹¬
-    void Restore(int m, int n);
+//æ¢å¤è¿·å®«
+    void Restore();
 
     const Point &getStart() const;
 
@@ -103,21 +117,23 @@ public:
 
     void setFinal(const Point &final);
 
+    void ClearStak();
+
 };
 
 
 int main() {
 
     Maze maze;
-    //µ÷ÓÃinitMaze()º¯Êı£¬µÃµ½ÃÔ¹¬
+    //è°ƒç”¨initMaze()å‡½æ•°ï¼Œå¾—åˆ°è¿·å®«
     maze.initMaze();
-    //µ÷ÓÃMazepath()º¯Êı»ñÈ¡Â·¾¶
-    if (maze.MazePathByBFS())
-        cout << "ÃÔ¹¬Â·¾¶Ì½Ë÷³É¹¦!\n";
+    //è°ƒç”¨Mazepath()å‡½æ•°è·å–è·¯å¾„
+    if (maze.MazePathByBFS()) {
+        cout << "Find the way !\n";
+        maze.initMaze(maze.getStart().x, maze.getStart().y);
+        maze.MazePathByDFS(maze.getStart().x, maze.getStart().y);
+    } else cout << "no way!\n";
 
-    if (maze.MazePathByDFS(maze.getStart().x,maze.getStart().y))
-        cout << "ÃÔ¹¬Â·¾¶Ì½Ë÷³É¹¦!\n";
-    else cout << "Â·¾¶²»´æÔÚ!\n";
     return 0;
 }
 
@@ -131,16 +147,16 @@ Point::Point() {
 
 }
 
-//¹¹Ôìº¯Êı£¬ÖÃ¿ÕÕ»
+//æ„é€ å‡½æ•°ï¼Œç½®ç©ºæ ˆ
 MyStack::MyStack() {
     top = nullptr;
 }
 
-//Îö¹¹º¯Êı
+//ææ„å‡½æ•°
 MyStack::~MyStack() {
 }
 
-//°ÑÔªËØxÑ¹ÈëÕ»ÖĞ
+//æŠŠå…ƒç´ xå‹å…¥æ ˆä¸­
 void MyStack::Push(Point e) {
     LinkNode *P;
     P = new LinkNode;
@@ -149,7 +165,7 @@ void MyStack::Push(Point e) {
     top = P;
 }
 
-//Ê¹Õ»¶¥ÔªËØ³öÕ»
+//ä½¿æ ˆé¡¶å…ƒç´ å‡ºæ ˆ
 Point MyStack::Pop() {
     Point temp;
     LinkNode *P;
@@ -160,17 +176,18 @@ Point MyStack::Pop() {
     return temp;
 }
 
-//È¡³öÕ»¶¥ÔªËØ
+//å–å‡ºæ ˆé¡¶å…ƒç´ 
 Point MyStack::getPop() {
     return top->data;
 }
 
-//°ÑÕ»Çå¿Õ
+//æŠŠæ ˆæ¸…ç©º
 void MyStack::Clear() {
     top = nullptr;
+
 }
 
-//ÅĞ¶ÏÕ»ÊÇ·ñÎª¿Õ£¬Èç¹ûÎª¿ÕÔò·µ»Ø1£¬·ñÔò·µ»Ø0
+//åˆ¤æ–­æ ˆæ˜¯å¦ä¸ºç©ºï¼Œå¦‚æœä¸ºç©ºåˆ™è¿”å›1ï¼Œå¦åˆ™è¿”å›0
 bool MyStack::empty() {
     return top == nullptr;
 }
@@ -180,33 +197,33 @@ Point Maze::getSize() {
     return {this->m, this->n};
 }
 
-//·µ»Ø´æÈ¡ÃÔ¹¬µÄ¶şÎ¬Ö¸Õë
+//è¿”å›å­˜å–è¿·å®«çš„äºŒç»´æŒ‡é’ˆ
 void Maze::initMaze() {
-    //¶¨Òå¶şÎ¬Ö¸Õë´æÈ¡ÃÔ¹¬
+    //å®šä¹‰äºŒç»´æŒ‡é’ˆå­˜å–è¿·å®«
     int **maze;
     int i = 0, j = 0;
-    cout << "ÇëÊäÈëÃÔ¹¬µÄ³¤ºÍ¿í:";
-    //ÊäÈëÃÔ¹¬µÄ³¤ºÍ¿í
-    //m,n·Ö±ğ´ú±íÃÔ¹¬µÄĞĞÊıºÍÁĞÊı
+    cout << "Please input the m and n as maze's size:";
+    //è¾“å…¥è¿·å®«çš„é•¿å’Œå®½
+    //m,nåˆ†åˆ«ä»£è¡¨è¿·å®«çš„è¡Œæ•°å’Œåˆ—æ•°
     cin >> m >> n;
 
 
     int start_x = 0, start_y = 0, final_x = 0, final_y = 0;
-    cout << "ÇëÊäÈëÆğµãx£¬y ÖÕµãx£¬y:";
-    //ÊäÈëÆğµãx£¬y ÖÕµãx£¬y
+    cout << "Please input the start point and final point (start_x start_y final_x, final_y)";
+    //è¾“å…¥èµ·ç‚¹xï¼Œy ç»ˆç‚¹xï¼Œy
     cin >> start_x >> start_y >> final_x >> final_y;
     setStart(Point(start_x, start_y));
     setFinal(Point(final_x, final_y));
 
 
-    cout << "ÇëÊäÈëÃÔ¹¬ÄÚÈİ:\n";
-    //ÉêÇë³¤¶ÈµÈÓÚĞĞÊı¼Ó2µÄ¶ş¼¶Ö¸Õë
+    cout << "Please input the maze:\n";
+    //ç”³è¯·é•¿åº¦ç­‰äºè¡Œæ•°åŠ 2çš„äºŒçº§æŒ‡é’ˆ
     maze = new int *[m + 2];
-    //ÉêÇëÃ¿¸ö¶şÎ¬Ö¸ÕëµÄ¿Õ¼ä
+    //ç”³è¯·æ¯ä¸ªäºŒç»´æŒ‡é’ˆçš„ç©ºé—´
     for (i = 0; i < m + 2; i++) {
         maze[i] = new int[n + 2];
     }
-    //ÊäÈëÃÔ¹¬µÄÄÚÈİ£¬0´ú±í¿ÉÍ¨£¬1´ú±í²»Í¨
+    //è¾“å…¥è¿·å®«çš„å†…å®¹ï¼Œ0ä»£è¡¨å¯é€šï¼Œ1ä»£è¡¨ä¸é€š
     for (i = 1; i <= m; i++)
         for (j = 1; j <= n; j++)
             cin >> maze[i][j];
@@ -217,168 +234,206 @@ void Maze::initMaze() {
     this->maze = maze;
 };
 
-//Ñ°ÕÒÃÔ¹¬mazeÖĞ´Ó£¨0£¬0£©µ½£¨m,n£©µÄÂ·¾¶
+//å¯»æ‰¾è¿·å®«mazeä¸­ä»ï¼ˆ0ï¼Œ0ï¼‰åˆ°ï¼ˆm,nï¼‰çš„è·¯å¾„
 bool Maze::MazePathByBFS()
-//µ½Ôò·µ»Øtrue,·ñÔò·µ»Øfalse
+//åˆ°åˆ™è¿”å›true,å¦åˆ™è¿”å›false
 {
-    //¶¨ÒåÕ»p¡¢qury_stack,·Ö±ğ´æÌ½Ë÷ÃÔ¹¬µÄ¹ı³ÌºÍ´æ´¢Â·¾¶
-    MyStack qury_stack, path_stack;
+    //å®šä¹‰æ ˆpã€qury_stack,åˆ†åˆ«å­˜æ¢ç´¢è¿·å®«çš„è¿‡ç¨‹å’Œå­˜å‚¨è·¯å¾„
+    //éå†åœ°å›¾
+    MyStack qury_stack;
+
+    //è®°å½•è·¯å¾„
+    MyStack path_stack;
+
     Point Temp1, Temp2;
     int x, y, i;
     Temp1.x = getStart().x;
     Temp1.y = getStart().y;
-    //½«Èë¿ÚÎ»ÖÃÈëÕ»
+    //å°†å…¥å£ä½ç½®å…¥æ ˆ
     qury_stack.Push(Temp1);
     path_stack.Push(Temp1);
-    //±êÖ¾Èë¿ÚÎ»ÖÃÒÑµ½´ï¹ı
+    //æ ‡å¿—å…¥å£ä½ç½®å·²åˆ°è¾¾è¿‡
     maze[getStart().x][getStart().y] = -1;
-    //Õ»q·Ç¿Õ£¬Ôò·´¸´Ì½Ë÷
+    //æ ˆqéç©ºï¼Œåˆ™åå¤æ¢ç´¢
     while (!qury_stack.empty()) {
-        //»ñÈ¡Õ»¶¥ÔªËØ
+        //è·å–æ ˆé¡¶å…ƒç´ 
         Temp2 = qury_stack.getPop();
         if (!(path_stack.getPop().x == qury_stack.getPop().x && path_stack.getPop().y == qury_stack.getPop().y))
-            //Èç¹ûÓĞĞÂÎ»ÖÃÈëÕ»£¬Ôò°ÑÉÏÒ»¸öÌ½Ë÷µÄÎ»ÖÃ´æÈëÕ»p
+            //å¦‚æœæœ‰æ–°ä½ç½®å…¥æ ˆï¼Œåˆ™æŠŠä¸Šä¸€ä¸ªæ¢ç´¢çš„ä½ç½®å­˜å…¥æ ˆp
             path_stack.Push(Temp2);
-        //Ì½Ë÷µ±Ç°Î»ÖÃµÄ4¸öÏàÁÚÎ»ÖÃ
+        //æ¢ç´¢å½“å‰ä½ç½®çš„4ä¸ªç›¸é‚»ä½ç½®
         for (i = 0; i < 4; i++) {
-            //¼ÆËã³öĞÂÎ»ÖÃxÎ»ÖÃÖµ
+            //è®¡ç®—å‡ºæ–°ä½ç½®xä½ç½®å€¼
             x = Temp2.x + action[i][0];
-            //¼ÆËã³öĞÂÎ»ÖÃyÎ»ÖÃÖµ
+            //è®¡ç®—å‡ºæ–°ä½ç½®yä½ç½®å€¼
             y = Temp2.y + action[i][1];
-            //ÅĞ¶ÏĞÂÎ»ÖÃÊÇ·ñ¿É´ï
+            //åˆ¤æ–­æ–°ä½ç½®æ˜¯å¦å¯è¾¾
             if (maze[x][y] == 0) {
                 Temp1.x = x;
                 Temp1.y = y;
-                //±êÖ¾ĞÂÎ»ÖÃÒÑµ½´ï¹ı
+                //æ ‡å¿—æ–°ä½ç½®å·²åˆ°è¾¾è¿‡
                 maze[x][y] = -1;
-                //ĞÂÎ»ÖÃÈëÕ»
+                //æ–°ä½ç½®å…¥æ ˆ
                 qury_stack.Push(Temp1);
             }
-            //³É¹¦µ½´ï³ö¿Ú
+            //æˆåŠŸåˆ°è¾¾å‡ºå£
             if ((x == (getFinal().x)) && (y == getFinal().y)) {
                 Temp1.x = m;
                 Temp1.y = n;
                 Temp1.dir = 0;
-                //°Ñ×îºóÒ»¸öÎ»ÖÃÈëÕ»
+                //æŠŠæœ€åä¸€ä¸ªä½ç½®å…¥æ ˆ
                 path_stack.Push(Temp1);
-                //Êä³öÂ·¾¶
+                //è¾“å‡ºè·¯å¾„
                 PrintPath(path_stack);
-                //»Ö¸´Â·¾¶
-                Restore(m, n);
-                //±íÊ¾³É¹¦ÕÒµ½Â·¾¶
+                //æ¢å¤è·¯å¾„
+                Restore();
+                //è¡¨ç¤ºæˆåŠŸæ‰¾åˆ°è·¯å¾„
                 return true;
             }
         }
-        //Èç¹ûÃ»ÓĞĞÂÎ»ÖÃÈëÕ»£¬Ôò·µ»Øµ½ÉÏÒ»¸öÎ»ÖÃ
+        //å¦‚æœæ²¡æœ‰æ–°ä½ç½®å…¥æ ˆï¼Œåˆ™è¿”å›åˆ°ä¸Šä¸€ä¸ªä½ç½®
         if (path_stack.getPop().x == qury_stack.getPop().x && path_stack.getPop().y == qury_stack.getPop().y) {
             path_stack.Pop();
             qury_stack.Pop();
         }
     }
-    //±íÊ¾²éÕÒÊ§°Ü£¬¼´ÃÔ¹¬ÎŞÂ·¾­
+    //è¡¨ç¤ºæŸ¥æ‰¾å¤±è´¥ï¼Œå³è¿·å®«æ— è·¯ç»
     return false;
 }
 
-bool Maze::MazePathByDFS(int x, int y)
-//µ½Ôò·µ»Øtrue,·ñÔò·µ»Øfalse
-{
+bool Maze::MazePathByDFS(int x, int y) {
+//åˆ°åˆ™è¿”å›true,å¦åˆ™è¿”å›false
 
-    // ÊÇ·ñÊÇÍ¨Â·
-    if (maze[x][y] == 0) {
-        maze[x][y] = -1;
-        // µİ¹é³ö¿Ú
-        if (x == getFinal().x && y == getFinal().y) {
-            printf("(%d,%d) ", x, y);
-            return true;
-        } else if (MazePathByDFS(x + action[0][0], y + action[0][1]) == 1) {
-            maze[x][y] = -1;
+    //æˆåŠŸ---ä¸‹é¢å¤„ç†è·¯å¾„é—®é¢˜
+    if (x == getFinal().x && y == getFinal().y) {
 
-            cout << "(" << x << "," << y << ",1,¡ú) <--";
-
-            return true;
-        } else if (MazePathByDFS(x + action[1][0], y + action[1][1]) == 1) {
-            maze[x][y] = -1;
-            cout << "(" << x << "," << y << ",2,¡ı) <--";
-
-            return true;
-        } else if (MazePathByDFS(x + action[2][0], y + action[2][1]) == 1) {
-            maze[x][y] = -1;
-            cout << "(" << x << "," << y << ",3,¡û) <--";
-
-            return true;
-        } else if (MazePathByDFS(x + action[3][0], y + action[3][1]) == 1) {
-            maze[x][y] = -1;
-            cout << "(" << x << "," << y << ",4,¡ü) <--";
-
-            return true;
+        cout << "Path " << ++count << ":" << endl;
+        //å°†pathé‡Œé¢çš„ç‚¹å–å‡ºæ¥ï¼Œæ”¾åœ¨tempé‡Œé¢
+        while (!qury_stack.empty()) {
+            //pathä»æ ˆé¡¶-æ ˆåº•çš„æ–¹å‘ï¼Œè·¯å¾„æ˜¯ä»ç»ˆç‚¹-èµ·ç‚¹çš„é¡ºåº
+            Point p = qury_stack.Pop();
+            path_stack.Push(p);
         }
+
+        cout << "The maze is (-1 is done) :" << endl;
+
+        for (int i = 0; i < m + 2; ++i) {
+            for (int j = 0; j < n + 2; ++j) {
+                if (maze[i][j] == -1) {
+                    cout << "* ";
+                } else cout << maze[i][j] << " ";
+            }
+            cout << endl;
+        }
+
+        cout << "The maze's path is (row,col)\n";
+
+        while (!path_stack.empty()) {
+            //è¾“å‡ºpath_stacké‡Œé¢çš„è·¯å¾„ï¼Œè¿™æ ·åˆšå¥½æ˜¯ä»èµ·ç‚¹åˆ°ç»ˆç‚¹çš„é¡ºåº
+            Point p1 = path_stack.Pop();
+            //å°†è·¯å¾„æ”¾å›pathé‡Œé¢ï¼Œå› ä¸ºåé¢è¿˜è¦å›æº¯!!!
+            qury_stack.Push(p1);
+
+            if (p1.x == getFinal().x && p1.y == getFinal().y) {
+                cout << "(" << p1.x << "," << p1.y << ")\n";
+            } else cout << "(" << p1.x << "," << p1.y << ") --> ";
+        }
+        return true;
     }
 
-    //±íÊ¾²éÕÒÊ§°Ü£¬¼´ÃÔ¹¬ÎŞÂ·¾­
+    //ä»4ä¸ªæ–¹å‘æ¢æµ‹
+    for (int i = 0; i < 4; i++) {
+
+        //nx,nyï¼šé€‰æ‹©ä¸€ä¸ªæ–¹å‘ï¼Œå‰è¿›ä¸€æ­¥ä¹‹åï¼Œæ–°çš„åæ ‡
+        int nx = x + action[i][0];
+        int ny = y + action[i][1];
+
+        if (maze[nx][ny] == 0) {
+
+            //è®¾ä¸ºè®¿é—®è¿‡
+            maze[nx][ny] = -1;
+
+            Point p;
+            p.x = nx;
+            p.y = ny;
+            //è®©å½“å‰ç‚¹è¿›æ ˆ
+            qury_stack.Push(p);
+            //è¿›ä¸€æ­¥æ¢æµ‹
+            MazePathByDFS(nx, ny);
+            //å›æº¯
+            maze[nx][ny] = 0;
+            //ç”±äºæ˜¯å›æº¯ï¼Œæ‰€ä»¥å½“å‰ç‚¹å±äºé€€å›å»çš„ç‚¹ï¼Œéœ€è¦å‡ºæ ˆ
+            qury_stack.Pop();
+        }
+    }
+    //è¡¨ç¤ºæŸ¥æ‰¾å¤±è´¥ï¼Œå³è¿·å®«æ— è·¯ç»
     return false;
 }
 
-//Êä³öÂ·¾¶
+//è¾“å‡ºè·¯å¾„
 void Maze::PrintPath(MyStack path_stack) {
-    //¶¨ÒåÒ»¸öÕ»£¬°´´ÓÈë¿Úµ½³ö¿Ú´æÈ¡Â·¾¶
-    cout << "ÃÔ¹¬µÄÂ·¾¶Îª(ĞĞ×ø±ê,ÁĞ×ø±ê,Êı×Ö»¯·½Ïò,·½Ïò)\n";
+    //å®šä¹‰ä¸€ä¸ªæ ˆï¼ŒæŒ‰ä»å…¥å£åˆ°å‡ºå£å­˜å–è·¯å¾„
+    cout << "The maze's path is (row,col,direction)\n";
     MyStack t;
     int a, b;
     Point data;
     LinkNode *temp;
-    //ÉêÇë¿Õ¼ä
+    //ç”³è¯·ç©ºé—´
     temp = new LinkNode;
-    //È¡Õ»pµÄ¶¥µãÔªËØ£¬¼´µÚÒ»¸öÎ»ÖÃ
+    //å–æ ˆpçš„é¡¶ç‚¹å…ƒç´ ï¼Œå³ç¬¬ä¸€ä¸ªä½ç½®
     temp->data = path_stack.Pop();
-    //µÚÒ»¸öÎ»ÖÃÈëÕ»t
+    //ç¬¬ä¸€ä¸ªä½ç½®å…¥æ ˆt
     t.Push(temp->data);
-    //ÊÍ·Å¿Õ¼ä
+    //é‡Šæ”¾ç©ºé—´
     delete temp;
-    //Õ»p·Ç¿Õ£¬Ôò·´¸´×ªÒÆ
+    //æ ˆpéç©ºï¼Œåˆ™åå¤è½¬ç§»
     while (!path_stack.empty()) {
         temp = new LinkNode;
-        //»ñÈ¡ÏÂÒ»¸öÎ»ÖÃ
+        //è·å–ä¸‹ä¸€ä¸ªä½ç½®
         temp->data = path_stack.Pop();
-        //µÃµ½ĞĞ×ß·½Ïò
-        //ĞĞ×ø±ê·½Ïò
+        //å¾—åˆ°è¡Œèµ°æ–¹å‘
+        //è¡Œåæ ‡æ–¹å‘
         a = t.getPop().x - temp->data.x;
-        //ÁĞ×ø±ê·½Ïò
+        //åˆ—åæ ‡æ–¹å‘
         b = t.getPop().y - temp->data.y;
-        //·½ÏòÏòÏÂ£¬ÓÃ1±íÊ¾
+        //æ–¹å‘å‘ä¸‹ï¼Œç”¨2è¡¨ç¤º
         if (a == 1)
-            temp->data.dir = 1;
-            //·½ÏòÏòÓÒ£¬ÓÃ2±íÊ¾
-        else if (b == 1)
             temp->data.dir = 2;
-            //·½ÏòÏòÉÏ£¬ÓÃ3±íÊ¾
+            //æ–¹å‘å‘å³ï¼Œç”¨1è¡¨ç¤º
+        else if (b == 1)
+            temp->data.dir = 1;
+            //æ–¹å‘å‘ä¸Šï¼Œç”¨4è¡¨ç¤º
         else if (a == -1)
-            temp->data.dir = 3;
-            //·½ÏòÏò×ó£¬ÓÃ4±íÊ¾
-        else if (b == -1)
             temp->data.dir = 4;
-        //°ÑĞÂÎ»ÖÃÈëÕ»
+            //æ–¹å‘å‘å·¦ï¼Œç”¨3è¡¨ç¤º
+        else if (b == -1)
+            temp->data.dir = 3;
+        //æŠŠæ–°ä½ç½®å…¥æ ˆ
         t.Push(temp->data);
         delete temp;
     }
-    //Êä³öÂ·¾¶£¬°üÀ¨ĞĞ×ø±ê£¬ÁĞ×ø±ê£¬ÏÂÒ»¸öÎ»ÖÃ·½Ïò
-    //Õ»·Ç¿Õ£¬¼ÌĞøÊä³ö
+    //è¾“å‡ºè·¯å¾„ï¼ŒåŒ…æ‹¬è¡Œåæ ‡ï¼Œåˆ—åæ ‡ï¼Œä¸‹ä¸€ä¸ªä½ç½®æ–¹å‘
+    //æ ˆéç©ºï¼Œç»§ç»­è¾“å‡º
     while (!t.empty()) {
         data = t.Pop();
-        //Êä³öĞĞ×ø±ê£¬ÁĞ×ø±ê
-        cout << '(' << data.x << ',' << data.y << ',' << data.dir;
-        //Êä³öÏàÓ¦µÄ·½Ïò
+        //è¾“å‡ºè¡Œåæ ‡ï¼Œåˆ—åæ ‡
+        cout << '(' << data.x << ',' << data.y;
+
+//        << ',' << data.dir
+
+        //è¾“å‡ºç›¸åº”çš„æ–¹å‘
         switch (data.dir) {
-            case 1:
-                cout << ",¡ı)\n";
-                break;
             case 2:
-                cout << ",¡ú)\n";
+                cout << ",â†“) --> ";
                 break;
-            case 3:
-                cout << ",¡ü)\n";
+            case 1:
+                cout << ",â†’) --> ";
                 break;
             case 4:
-                cout << ",¡û)\n";
+                cout << ",â†‘) --> ";
+                break;
+            case 3:
+                cout << ",â†) --> ";
                 break;
             case 0:
                 cout << ")\n";
@@ -389,13 +444,13 @@ void Maze::PrintPath(MyStack path_stack) {
     }
 }
 
-//»Ö¸´ÃÔ¹¬
-void Maze::Restore(int m, int n) {
+//æ¢å¤è¿·å®«
+void Maze::Restore() {
     int i, j;
-    //±éÀúÖ¸Õë
+    //éå†æŒ‡é’ˆ
     for (i = 0; i < m + 2; i++)
         for (j = 0; j < n + 2; j++) {
-            //»Ö¸´Ì½Ë÷¹ıÎ»ÖÃ£¬¼´°Ñ-1»Ö¸´Îª0
+            //æ¢å¤æ¢ç´¢è¿‡ä½ç½®ï¼Œå³æŠŠ-1æ¢å¤ä¸º0
             if (maze[i][j] == -1)
                 maze[i][j] = 0;
         }
@@ -417,4 +472,14 @@ void Maze::setFinal(const Point &final) {
     Maze::final = final;
 }
 
+void Maze::ClearStak() {
+    qury_stack.Clear();
+    path_stack.Clear();
+}
+
+void Maze::initMaze(int start_x, int start_y) {
+    qury_stack.Push(Point(start_x, start_y));
+
+    maze[start_x][start_y] = -1;
+}
 

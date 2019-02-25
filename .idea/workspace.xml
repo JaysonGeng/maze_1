@@ -34,6 +34,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="31af0fe4-f243-4320-9b50-e9d701b14980" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TEN.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TEN.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TEN.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TEN.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TEN.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TEN.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TEN.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TEN.dir/main.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TEN.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TEN.dir/objects.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/TEN.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/TEN.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -54,8 +61,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2575">
-              <caret line="117" column="23" selection-start-line="117" selection-start-column="23" selection-end-line="117" selection-end-column="23" />
+            <state relative-caret-position="208">
+              <caret line="133" column="65" lean-forward="true" selection-start-line="133" selection-start-column="65" selection-end-line="133" selection-end-column="65" />
             </state>
           </provider>
         </entry>
@@ -142,32 +149,35 @@
       <option name="presentableId" value="Default" />
       <updated>1550995706224</updated>
       <workItem from="1550995711574" duration="1640000" />
-      <workItem from="1551029513540" duration="18109000" />
+      <workItem from="1551029513540" duration="26910000" />
+      <workItem from="1551096646370" duration="1947000" />
+      <workItem from="1551098622628" duration="417000" />
+      <workItem from="1551099135496" duration="4409000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19749000" />
+    <option name="totallyTimeSpent" value="35323000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="23" width="2062" height="1136" extended-state="7" />
+    <frame x="-7" y="23" width="2062" height="1136" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25249502" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20658682" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32935324" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32868525" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32768923" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39940238" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
       <window_info anchor="bottom" id="TeamCity" order="8" />
-      <window_info anchor="bottom" id="Messages" order="9" weight="0.32868525" />
-      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Messages" order="9" weight="0.32768923" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32968128" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="12" />
+      <window_info anchor="bottom" id="Version Control" order="12" weight="0.32968128" />
       <window_info anchor="bottom" id="CMake" order="13" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -178,6 +188,73 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="CMakeRunConfiguration">
+        <watch expression="qury_stack" language="ObjectiveC" />
+        <watch expression="path_stack" language="ObjectiveC" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="watch">
+      <expression>
+        <expression-string>path_stack</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>qury_stack</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>this-&gt;qury_stack.top-&gt;next-&gt;data</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://C:/MinGW/include/stdlib.h">
       <provider selected="true" editor-type-id="text-editor">
@@ -186,20 +263,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test1.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="9" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/test1.txt" />
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2575">
-          <caret line="117" column="23" selection-start-line="117" selection-start-column="23" selection-end-line="117" selection-end-column="23" />
+        <state relative-caret-position="208">
+          <caret line="133" column="65" lean-forward="true" selection-start-line="133" selection-start-column="65" selection-end-line="133" selection-end-column="65" />
         </state>
       </provider>
     </entry>
