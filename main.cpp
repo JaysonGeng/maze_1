@@ -15,7 +15,7 @@ public:
     int x;
     //y代表当前位置的列坐标
     int y;
-    //0:无效,1:东,2:南,3:西,4:北
+    //0:无效,1:右,2:下,3:左,4:上
     int dir;
 };
 
@@ -85,7 +85,9 @@ public:
 
 //寻找迷宫maze中从（0，0）到（m,n）的路径
 //到则返回true,否则返回false
-    bool MazePath();
+    bool MazePathByBFS();
+
+    bool MazePathByDFS(int x, int y);
 
 //输出迷宫的路径
     void PrintPath(MyStack path_stack);
@@ -110,7 +112,10 @@ int main() {
     //调用initMaze()函数，得到迷宫
     maze.initMaze();
     //调用Mazepath()函数获取路径
-    if (maze.MazePath())
+    if (maze.MazePathByBFS())
+        cout << "迷宫路径探索成功!\n";
+
+    if (maze.MazePathByDFS(maze.getStart().x,maze.getStart().y))
         cout << "迷宫路径探索成功!\n";
     else cout << "路径不存在!\n";
     return 0;
@@ -213,7 +218,7 @@ void Maze::initMaze() {
 };
 
 //寻找迷宫maze中从（0，0）到（m,n）的路径
-bool Maze::MazePath()
+bool Maze::MazePathByBFS()
 //到则返回true,否则返回false
 {
     //定义栈p、qury_stack,分别存探索迷宫的过程和存储路径
@@ -270,6 +275,45 @@ bool Maze::MazePath()
             qury_stack.Pop();
         }
     }
+    //表示查找失败，即迷宫无路经
+    return false;
+}
+
+bool Maze::MazePathByDFS(int x, int y)
+//到则返回true,否则返回false
+{
+
+    // 是否是通路
+    if (maze[x][y] == 0) {
+        maze[x][y] = -1;
+        // 递归出口
+        if (x == getFinal().x && y == getFinal().y) {
+            printf("(%d,%d) ", x, y);
+            return true;
+        } else if (MazePathByDFS(x + action[0][0], y + action[0][1]) == 1) {
+            maze[x][y] = -1;
+
+            cout << "(" << x << "," << y << ",1,→) <--";
+
+            return true;
+        } else if (MazePathByDFS(x + action[1][0], y + action[1][1]) == 1) {
+            maze[x][y] = -1;
+            cout << "(" << x << "," << y << ",2,↓) <--";
+
+            return true;
+        } else if (MazePathByDFS(x + action[2][0], y + action[2][1]) == 1) {
+            maze[x][y] = -1;
+            cout << "(" << x << "," << y << ",3,←) <--";
+
+            return true;
+        } else if (MazePathByDFS(x + action[3][0], y + action[3][1]) == 1) {
+            maze[x][y] = -1;
+            cout << "(" << x << "," << y << ",4,↑) <--";
+
+            return true;
+        }
+    }
+
     //表示查找失败，即迷宫无路经
     return false;
 }
