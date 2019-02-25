@@ -1,0 +1,3 @@
+D:/Program Files/C code/TEN/cmake-build-debug/CMakeFiles/TEN.dir
+D:/Program Files/C code/TEN/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/Program Files/C code/TEN/cmake-build-debug/CMakeFiles/rebuild_cache.dir
